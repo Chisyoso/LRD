@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colegio Verde | Anuncios</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/supabase.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/components.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+
+</head>
+<body>
+  <div data-shell>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h1>Anuncios</h1>
+            <p class="small">Solo staff, moderadores y admin pueden publicar avisos oficiales.</p>
+          </div>
+        </div>
+
+        <div id="announcements-admin" class="panel hidden">
+          <h3>Nuevo anuncio oficial</h3>
+          <div class="form-grid">
+            <input class="input" placeholder="Título">
+            <textarea class="textarea" placeholder="Mensaje oficial"></textarea>
+            <button class="btn primary" type="button">Publicar anuncio</button>
+          </div>
+        </div>
+
+        <div id="announcements-list" class="grid"></div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

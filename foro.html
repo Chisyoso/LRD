@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colegio Verde | Foro</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/supabase.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/components.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+
+</head>
+<body>
+  <div data-shell>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h1>Foro</h1>
+            <p class="small">Preguntas, opiniones y mensajes con comentarios, likes, guardados, etiquetas y estado.</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <input class="input" placeholder="Buscar en el foro">
+          <select class="select">
+            <option>Todos los tipos</option>
+            <option>Pregunta</option>
+            <option>Opinión</option>
+            <option>Mensaje</option>
+          </select>
+        </div>
+
+        <div class="panel" style="margin-bottom:1rem">
+          <h3>Crear publicación de foro</h3>
+          <div class="form-grid">
+            <select class="select">
+              <option>Pregunta</option>
+              <option>Opinión</option>
+              <option>Mensaje</option>
+            </select>
+            <textarea class="textarea" placeholder="Escribe tu mensaje"></textarea>
+            <input class="input" placeholder="Etiquetas">
+            <button class="btn primary" type="button">Publicar</button>
+          </div>
+        </div>
+
+        <div id="forum-list" class="grid"></div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
