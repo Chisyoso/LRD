@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro · LRD</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body data-page="register">
+  <div id="appHeader"></div>
+  <main class="container">
+    
+<section class="section">
+  <div class="panel">
+    <h1>Registro</h1>
+    <form id="registerForm" class="form grid two">
+      <div>
+        <label class="field"><span>Nombre</span><input id="fullName" required></label>
+        <label class="field"><span>Usuario</span><input id="username" required></label>
+        <label class="field"><span>Correo o medio de contacto</span><input id="contact" required></label>
+        <label class="field"><span>Número de contacto</span><input id="phone" placeholder="Opcional para usuario normal"></label>
+      </div>
+      <div>
+        <label class="field"><span>Rol solicitado</span>
+          <select id="role" required>
+            <option value="usuario">Usuario</option>
+            <option value="reportero">Reportero</option>
+            <option value="staff">Staff</option>
+            <option value="moderador">Moderador</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+        <label class="field"><span>Respuestas de validación</span><textarea id="validationAnswers" rows="5" placeholder="Responde aquí las preguntas de validación"></textarea></label>
+        <label class="field"><span>Foto de perfil</span><input id="avatar" type="file" accept="image/*"></label>
+        <label class="field"><span>Correo</span><input id="email" type="email" required></label>
+        <label class="field"><span>Contraseña</span><input id="password" type="password" required></label>
+      </div>
+      <button class="btn btn-green" type="submit">Registrarme</button>
+    </form>
+  </div>
+</section>
+
+  </main>
+  <div id="appFooter"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · LRD</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body data-page="admin">
+  <div id="appHeader"></div>
+  <main class="container">
+    
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Admin</h1>
+      <p>Usuarios y logs del sistema.</p>
+    </div>
+  </div>
+  <div class="grid two">
+    <div class="panel">
+      <h2>Usuarios</h2>
+      <div id="adminUsers"></div>
+    </div>
+    <div class="panel">
+      <h2>Logs</h2>
+      <div id="adminLogs"></div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <div id="appFooter"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

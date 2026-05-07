@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · LRD</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body data-page="index">
+  <div id="appHeader"></div>
+  <main class="container">
+    
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-panel">
+      <p class="badge">Proyecto escolar moderado</p>
+      <h1>Colegio Verde</h1>
+      <p>Una plataforma interna para noticias, publicaciones, foro y anuncios con moderación previa, registros y roles claros.</p>
+      <div class="hero-actions">
+        <a class="btn btn-green" href="register.html">Crear cuenta</a>
+        <a class="btn btn-dark" href="noticias.html">Ver noticias</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="panel">
+        <h3>Objetivo</h3>
+        <p class="muted">Ordenar la comunicación del colegio sin favoritismos, con contenido trazable y revisable.</p>
+      </div>
+      <div class="panel">
+        <h3>Roles</h3>
+        <div class="tag-row">
+          <span class="tag">usuario</span><span class="tag">reportero</span><span class="tag">staff</span><span class="tag">moderador</span><span class="tag">admin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stat-grid" id="statsGrid">
+  <div class="stat-box"><span>Noticias</span><strong>4</strong><small>Ejemplo base</small></div>
+  <div class="stat-box"><span>Publicaciones</span><strong>8</strong><small>Con cola de revisión</small></div>
+  <div class="stat-box"><span>Foro</span><strong>Activo</strong><small>Comentarios y likes</small></div>
+  <div class="stat-box"><span>Logs</span><strong>Siempre</strong><small>Toda acción importante</small></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Noticias destacadas</h1>
+      <p>Solo para reporteros y usuarios autorizados.</p>
+    </div>
+  </div>
+  <div class="grid two" id="featuredNews"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Publicaciones destacadas</h1>
+      <p>Subidas por usuarios y aprobadas por moderación.</p>
+    </div>
+  </div>
+  <div class="grid two" id="featuredPosts"></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Anuncios oficiales</h1>
+      <p>Mensajes del colegio con acceso restringido al staff autorizado.</p>
+    </div>
+  </div>
+  <div class="grid two" id="featuredAds"></div>
+</section>
+
+  </main>
+  <div id="appFooter"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

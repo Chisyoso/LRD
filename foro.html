@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foro · LRD</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body data-page="foro">
+  <div id="appHeader"></div>
+  <main class="container">
+    
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Foro</h1>
+      <p>Preguntas, opiniones y mensajes con comentarios, likes y guardados.</p>
+    </div>
+    <div class="section-actions">
+      <input id="forumSearch" placeholder="Buscar en el foro">
+    </div>
+  </div>
+  <div id="forumFormWrap"></div>
+  <div class="grid two">
+    <div>
+      <h2>Publicaciones del foro</h2>
+      <div id="forumList"></div>
+    </div>
+    <div id="forumComments"></div>
+  </div>
+</section>
+
+  </main>
+  <div id="appFooter"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

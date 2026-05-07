@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moderación · LRD</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body data-page="mod">
+  <div id="appHeader"></div>
+  <main class="container">
+    
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Moderación</h1>
+      <p>Apelaciones, reportes y cola de revisión.</p>
+    </div>
+  </div>
+  <div class="grid three">
+    <div class="panel"><h2>Cola</h2><div id="modQueue"></div></div>
+    <div class="panel"><h2>Apelaciones</h2><div id="modAppeals"></div></div>
+    <div class="panel"><h2>Reportes</h2><div id="modReports"></div></div>
+  </div>
+</section>
+
+  </main>
+  <div id="appFooter"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
