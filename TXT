@@ -1,0 +1,11 @@
+proyectos:
+servo normal
+servo con potenciometro
+laser con led y foto reistor
+scaner lcd
+lcd mas detector de temperatura
+lcd mas detector de humedad
+sensor ultra sonico
+sensor ultra sonico mas buzzer 
+pantalla mas sensor ultra sonico
+sensor ultra sonico mas leds secuenciales
