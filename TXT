@@ -1,11 +1,203 @@
-proyectos:
-servo normal
-servo con potenciometro
-laser con led y foto reistor
-scaner lcd
-lcd mas detector de temperatura
-lcd mas detector de humedad
-sensor ultra sonico
-sensor ultra sonico mas buzzer 
-pantalla mas sensor ultra sonico
-sensor ultra sonico mas leds secuenciales
+Proyecto 1 – Control básico de servomotor
+
+Descripción
+Este proyecto utiliza un servomotor controlado por Arduino para realizar movimientos en distintos ángulos de posición.
+
+Funcionamiento
+El Arduino envía señales al servomotor indicando el ángulo al que debe desplazarse. El servo interpreta estas señales y ajusta su posición automáticamente dentro de un rango determinado.
+
+El movimiento puede programarse de manera secuencial o mantenerse fijo en posiciones específicas según la lógica establecida.
+
+Este proyecto introduce el uso de actuadores mecánicos controlados mediante señales digitales.
+
+Aplicación en la vida diaria
+
+* Brazos robóticos.
+* Sistemas automáticos de apertura.
+* Mecanismos de dirección.
+* Sistemas de automatización y robótica.
+
+⸻
+
+Proyecto 2 – Control de servomotor con potenciómetro
+
+Descripción
+Este proyecto utiliza un potenciómetro para controlar manualmente la posición de un servomotor.
+
+Funcionamiento
+El Arduino lee el valor analógico generado por el potenciómetro y lo convierte en un ángulo de movimiento para el servomotor. A medida que se gira el potenciómetro, el servo cambia su posición proporcionalmente.
+
+Esto permite controlar el movimiento del motor en tiempo real utilizando una entrada analógica.
+
+Este proyecto introduce la relación entre entradas analógicas y control mecánico.
+
+Aplicación en la vida diaria
+
+* Controles de precisión.
+* Sistemas robóticos manuales.
+* Simulación de movimientos mecánicos.
+* Control de dirección en sistemas automatizados.
+
+⸻
+
+Proyecto 3 – Sistema láser con LED y fotoresistor
+
+Descripción
+Este proyecto utiliza un láser y un fotoresistor para detectar cambios en la intensidad de la luz cuando el haz es interrumpido.
+
+Funcionamiento
+El láser apunta directamente hacia el fotoresistor, el cual detecta continuamente la luz recibida. Cuando un objeto bloquea el haz láser, el valor detectado cambia y el Arduino puede ejecutar una acción determinada.
+
+Este sistema funciona como un sensor de interrupción basado en luz.
+
+Este proyecto introduce el uso de sensores ópticos y detección automática.
+
+Aplicación en la vida diaria
+
+* Sistemas de seguridad.
+* Alarmas de interrupción.
+* Sensores de paso.
+* Automatización mediante detección de objetos.
+
+⸻
+
+Proyecto 4 – Escáner con pantalla LCD
+
+Descripción
+Este proyecto utiliza una pantalla LCD para mostrar información generada durante un proceso de lectura o escaneo.
+
+Funcionamiento
+El Arduino procesa la información obtenida y la envía a la pantalla LCD para ser mostrada en tiempo real. La pantalla permite visualizar mensajes, valores o estados del sistema de manera organizada.
+
+Este proyecto introduce la comunicación entre Arduino y pantallas de visualización.
+
+Aplicación en la vida diaria
+
+* Sistemas de monitoreo.
+* Paneles informativos.
+* Interfaces electrónicas.
+* Dispositivos de visualización de datos.
+
+⸻
+
+Proyecto 5 – Pantalla LCD con sensor de temperatura
+
+Descripción
+Este proyecto combina un sensor de temperatura con una pantalla LCD para mostrar datos ambientales en tiempo real.
+
+Funcionamiento
+El sensor detecta la temperatura del entorno y envía los datos al Arduino. Posteriormente, el sistema procesa la información y la muestra en la pantalla LCD.
+
+Esto permite visualizar de manera clara los cambios de temperatura detectados.
+
+Este proyecto introduce el uso de sensores ambientales y visualización de datos.
+
+Aplicación en la vida diaria
+
+* Termómetros digitales.
+* Monitoreo ambiental.
+* Sistemas de control climático.
+* Equipos electrónicos de medición.
+
+⸻
+
+Proyecto 6 – Pantalla LCD con sensor de humedad
+
+Descripción
+Este proyecto utiliza un sensor de humedad conectado a una pantalla LCD para mostrar los niveles detectados en tiempo real.
+
+Funcionamiento
+El sensor obtiene información relacionada con la humedad del ambiente y el Arduino procesa esos datos para mostrarlos en la pantalla LCD.
+
+El sistema permite monitorear continuamente las condiciones ambientales.
+
+Este proyecto introduce el monitoreo ambiental mediante sensores electrónicos.
+
+Aplicación en la vida diaria
+
+* Sistemas de agricultura.
+* Monitoreo de invernaderos.
+* Control ambiental.
+* Equipos de medición climática.
+
+⸻
+
+Proyecto 7 – Sensor ultrasónico
+
+Descripción
+Este proyecto utiliza un sensor ultrasónico para medir distancias entre el dispositivo y un objeto cercano.
+
+Funcionamiento
+El sensor emite ondas ultrasónicas que rebotan al chocar con un objeto y regresan al sensor. El Arduino calcula el tiempo de retorno de la señal y determina la distancia aproximada.
+
+Este proyecto introduce conceptos de medición y detección de proximidad.
+
+Aplicación en la vida diaria
+
+* Sensores de proximidad.
+* Sistemas de medición.
+* Robots autónomos.
+* Sistemas de detección de obstáculos.
+
+⸻
+
+Proyecto 8 – Sensor ultrasónico con buzzer
+
+Descripción
+Este proyecto combina un sensor ultrasónico con un buzzer para generar alertas sonoras dependiendo de la distancia detectada.
+
+Funcionamiento
+El sensor ultrasónico mide la cercanía de un objeto y el Arduino activa el buzzer cuando la distancia alcanza ciertos niveles definidos.
+
+Mientras más cerca esté el objeto, el sistema puede generar avisos más frecuentes o intensos.
+
+Este proyecto introduce sistemas de alerta automatizados.
+
+Aplicación en la vida diaria
+
+* Sensores de estacionamiento.
+* Alarmas de proximidad.
+* Sistemas de seguridad.
+* Detección automática de objetos.
+
+⸻
+
+Proyecto 9 – Pantalla LCD con sensor ultrasónico
+
+Descripción
+Este proyecto utiliza un sensor ultrasónico y una pantalla LCD para mostrar distancias medidas en tiempo real.
+
+Funcionamiento
+El sensor detecta la distancia hacia un objeto y el Arduino procesa esa información para visualizarla directamente en la pantalla LCD.
+
+Esto permite una lectura clara y organizada de los datos obtenidos.
+
+Este proyecto introduce la integración entre sensores y sistemas de visualización.
+
+Aplicación en la vida diaria
+
+* Medidores digitales de distancia.
+* Sistemas de monitoreo.
+* Herramientas de medición electrónica.
+* Interfaces de sensores.
+
+⸻
+
+Proyecto 10 – Sensor ultrasónico con LEDs secuenciales
+
+Descripción
+Este proyecto utiliza varios LEDs para representar visualmente la distancia detectada por un sensor ultrasónico.
+
+Funcionamiento
+El sensor ultrasónico mide la cercanía de un objeto y el Arduino enciende diferentes LEDs dependiendo de la distancia detectada.
+
+A medida que el objeto se aproxima, más LEDs se activan de manera secuencial, funcionando como un indicador visual de proximidad.
+
+Este proyecto combina sensores con sistemas de señalización visual.
+
+Aplicación en la vida diaria
+
+* Indicadores de distancia.
+* Sistemas de estacionamiento.
+* Paneles de proximidad.
+* Sistemas visuales de advertencia.
