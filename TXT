@@ -1,203 +1,283 @@
-Proyecto 1 – Control básico de servomotor
+/*
 
-Descripción
-Este proyecto utiliza un servomotor controlado por Arduino para realizar movimientos en distintos ángulos de posición.
+ESP32-CAM AI THINKER
+Compatible con ESP32 Package 2.0.17
 
-Funcionamiento
-El Arduino envía señales al servomotor indicando el ángulo al que debe desplazarse. El servo interpreta estas señales y ajusta su posición automáticamente dentro de un rango determinado.
+ESTABLE:
+- Sin watchdog reset
+- Sin send_P
+- Sin brownout reset
+- Streaming simple
+- Funciona con ESP32-CAM-MB
 
-El movimiento puede programarse de manera secuencial o mantenerse fijo en posiciones específicas según la lógica establecida.
+IMPORTANTE:
+Board:
+AI Thinker ESP32-CAM
 
-Este proyecto introduce el uso de actuadores mecánicos controlados mediante señales digitales.
+Upload Speed:
+115200
 
-Aplicación en la vida diaria
+*/
 
-* Brazos robóticos.
-* Sistemas automáticos de apertura.
-* Mecanismos de dirección.
-* Sistemas de automatización y robótica.
+#include "esp_camera.h"
+#include <WiFi.h>
+#include <WebServer.h>
 
-⸻
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
 
-Proyecto 2 – Control de servomotor con potenciómetro
+// =========================
+// WIFI
+// =========================
 
-Descripción
-Este proyecto utiliza un potenciómetro para controlar manualmente la posición de un servomotor.
+const char* ssid = "Familia_Zambrano";
+const char* password = "20082018";
 
-Funcionamiento
-El Arduino lee el valor analógico generado por el potenciómetro y lo convierte en un ángulo de movimiento para el servomotor. A medida que se gira el potenciómetro, el servo cambia su posición proporcionalmente.
+// =========================
+// AI THINKER ESP32-CAM
+// =========================
 
-Esto permite controlar el movimiento del motor en tiempo real utilizando una entrada analógica.
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
 
-Este proyecto introduce la relación entre entradas analógicas y control mecánico.
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
 
-Aplicación en la vida diaria
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
 
-* Controles de precisión.
-* Sistemas robóticos manuales.
-* Simulación de movimientos mecánicos.
-* Control de dirección en sistemas automatizados.
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
 
-⸻
+// =========================
 
-Proyecto 3 – Sistema láser con LED y fotoresistor
+WebServer server(80);
 
-Descripción
-Este proyecto utiliza un láser y un fotoresistor para detectar cambios en la intensidad de la luz cuando el haz es interrumpido.
+// =========================
+// PAGINA WEB
+// =========================
 
-Funcionamiento
-El láser apunta directamente hacia el fotoresistor, el cual detecta continuamente la luz recibida. Cuando un objeto bloquea el haz láser, el valor detectado cambia y el Arduino puede ejecutar una acción determinada.
+void handleRoot() {
 
-Este sistema funciona como un sensor de interrupción basado en luz.
+  String html =
+  "<!DOCTYPE html>"
 
-Este proyecto introduce el uso de sensores ópticos y detección automática.
+  "<html>"
 
-Aplicación en la vida diaria
+  "<head>"
 
-* Sistemas de seguridad.
-* Alarmas de interrupción.
-* Sensores de paso.
-* Automatización mediante detección de objetos.
+  "<meta name='viewport' content='width=device-width, initial-scale=1'>"
 
-⸻
+  "<title>ESP32 CAM</title>"
 
-Proyecto 4 – Escáner con pantalla LCD
+  "<style>"
 
-Descripción
-Este proyecto utiliza una pantalla LCD para mostrar información generada durante un proceso de lectura o escaneo.
+  "body{"
+  "margin:0;"
+  "padding:0;"
+  "background:#000;"
+  "color:white;"
+  "font-family:Arial;"
+  "text-align:center;"
+  "}"
 
-Funcionamiento
-El Arduino procesa la información obtenida y la envía a la pantalla LCD para ser mostrada en tiempo real. La pantalla permite visualizar mensajes, valores o estados del sistema de manera organizada.
+  "h1{"
+  "padding:15px;"
+  "}"
 
-Este proyecto introduce la comunicación entre Arduino y pantallas de visualización.
+  "img{"
+  "width:95%;"
+  "max-width:700px;"
+  "border-radius:20px;"
+  "border:3px solid cyan;"
+  "}"
 
-Aplicación en la vida diaria
+  "</style>"
 
-* Sistemas de monitoreo.
-* Paneles informativos.
-* Interfaces electrónicas.
-* Dispositivos de visualización de datos.
+  "</head>"
 
-⸻
+  "<body>"
 
-Proyecto 5 – Pantalla LCD con sensor de temperatura
+  "<h1>ESP32-CAM</h1>"
 
-Descripción
-Este proyecto combina un sensor de temperatura con una pantalla LCD para mostrar datos ambientales en tiempo real.
+  "<img id='cam' src='/cam'>"
 
-Funcionamiento
-El sensor detecta la temperatura del entorno y envía los datos al Arduino. Posteriormente, el sistema procesa la información y la muestra en la pantalla LCD.
+  "<script>"
 
-Esto permite visualizar de manera clara los cambios de temperatura detectados.
+  "setInterval(function(){"
 
-Este proyecto introduce el uso de sensores ambientales y visualización de datos.
+  "document.getElementById('cam').src='/cam?t=' + Date.now();"
 
-Aplicación en la vida diaria
+  "}, 1200);"
 
-* Termómetros digitales.
-* Monitoreo ambiental.
-* Sistemas de control climático.
-* Equipos electrónicos de medición.
+  "</script>"
 
-⸻
+  "</body>"
 
-Proyecto 6 – Pantalla LCD con sensor de humedad
+  "</html>";
 
-Descripción
-Este proyecto utiliza un sensor de humedad conectado a una pantalla LCD para mostrar los niveles detectados en tiempo real.
+  server.send(200, "text/html", html);
+}
 
-Funcionamiento
-El sensor obtiene información relacionada con la humedad del ambiente y el Arduino procesa esos datos para mostrarlos en la pantalla LCD.
+// =========================
+// FOTO
+// =========================
 
-El sistema permite monitorear continuamente las condiciones ambientales.
+void handleCam() {
 
-Este proyecto introduce el monitoreo ambiental mediante sensores electrónicos.
+  camera_fb_t * fb = esp_camera_fb_get();
 
-Aplicación en la vida diaria
+  if (!fb) {
 
-* Sistemas de agricultura.
-* Monitoreo de invernaderos.
-* Control ambiental.
-* Equipos de medición climática.
+    server.send(500, "text/plain", "Camera Error");
 
-⸻
+    return;
+  }
 
-Proyecto 7 – Sensor ultrasónico
+  WiFiClient client = server.client();
 
-Descripción
-Este proyecto utiliza un sensor ultrasónico para medir distancias entre el dispositivo y un objeto cercano.
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: image/jpeg");
+  client.println("Content-Length: " + String(fb->len));
+  client.println("Cache-Control: no-cache");
+  client.println("Connection: close");
+  client.println();
 
-Funcionamiento
-El sensor emite ondas ultrasónicas que rebotan al chocar con un objeto y regresan al sensor. El Arduino calcula el tiempo de retorno de la señal y determina la distancia aproximada.
+  client.write(fb->buf, fb->len);
 
-Este proyecto introduce conceptos de medición y detección de proximidad.
+  esp_camera_fb_return(fb);
+}
 
-Aplicación en la vida diaria
+// =========================
+// SETUP
+// =========================
 
-* Sensores de proximidad.
-* Sistemas de medición.
-* Robots autónomos.
-* Sistemas de detección de obstáculos.
+void setup() {
 
-⸻
+  // DESACTIVAR BROWNOUT
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
 
-Proyecto 8 – Sensor ultrasónico con buzzer
+  Serial.begin(115200);
 
-Descripción
-Este proyecto combina un sensor ultrasónico con un buzzer para generar alertas sonoras dependiendo de la distancia detectada.
+  delay(2000);
 
-Funcionamiento
-El sensor ultrasónico mide la cercanía de un objeto y el Arduino activa el buzzer cuando la distancia alcanza ciertos niveles definidos.
+  Serial.println();
+  Serial.println("Iniciando ESP32-CAM...");
 
-Mientras más cerca esté el objeto, el sistema puede generar avisos más frecuentes o intensos.
+  // =========================
+  // CONFIG CAMARA
+  // =========================
 
-Este proyecto introduce sistemas de alerta automatizados.
+  camera_config_t config;
 
-Aplicación en la vida diaria
+  config.ledc_channel = LEDC_CHANNEL_0;
+  config.ledc_timer = LEDC_TIMER_0;
 
-* Sensores de estacionamiento.
-* Alarmas de proximidad.
-* Sistemas de seguridad.
-* Detección automática de objetos.
+  config.pin_d0 = Y2_GPIO_NUM;
+  config.pin_d1 = Y3_GPIO_NUM;
+  config.pin_d2 = Y4_GPIO_NUM;
+  config.pin_d3 = Y5_GPIO_NUM;
+  config.pin_d4 = Y6_GPIO_NUM;
+  config.pin_d5 = Y7_GPIO_NUM;
+  config.pin_d6 = Y8_GPIO_NUM;
+  config.pin_d7 = Y9_GPIO_NUM;
 
-⸻
+  config.pin_xclk = XCLK_GPIO_NUM;
 
-Proyecto 9 – Pantalla LCD con sensor ultrasónico
+  config.pin_pclk = PCLK_GPIO_NUM;
+  config.pin_vsync = VSYNC_GPIO_NUM;
+  config.pin_href = HREF_GPIO_NUM;
 
-Descripción
-Este proyecto utiliza un sensor ultrasónico y una pantalla LCD para mostrar distancias medidas en tiempo real.
+  config.pin_sscb_sda = SIOD_GPIO_NUM;
+  config.pin_sscb_scl = SIOC_GPIO_NUM;
 
-Funcionamiento
-El sensor detecta la distancia hacia un objeto y el Arduino procesa esa información para visualizarla directamente en la pantalla LCD.
+  config.pin_pwdn = PWDN_GPIO_NUM;
+  config.pin_reset = RESET_GPIO_NUM;
 
-Esto permite una lectura clara y organizada de los datos obtenidos.
+  config.xclk_freq_hz = 20000000;
 
-Este proyecto introduce la integración entre sensores y sistemas de visualización.
+  config.pixel_format = PIXFORMAT_JPEG;
 
-Aplicación en la vida diaria
+  // RESOLUCION MUY ESTABLE
+  config.frame_size = FRAMESIZE_QQVGA;
 
-* Medidores digitales de distancia.
-* Sistemas de monitoreo.
-* Herramientas de medición electrónica.
-* Interfaces de sensores.
+  // CALIDAD ESTABLE
+  config.jpeg_quality = 15;
 
-⸻
+  // IMPORTANTE PARA ESTABILIDAD
+  config.fb_count = 1;
 
-Proyecto 10 – Sensor ultrasónico con LEDs secuenciales
+  // =========================
+  // INICIAR CAMARA
+  // =========================
 
-Descripción
-Este proyecto utiliza varios LEDs para representar visualmente la distancia detectada por un sensor ultrasónico.
+  esp_err_t err = esp_camera_init(&config);
 
-Funcionamiento
-El sensor ultrasónico mide la cercanía de un objeto y el Arduino enciende diferentes LEDs dependiendo de la distancia detectada.
+  if (err != ESP_OK) {
 
-A medida que el objeto se aproxima, más LEDs se activan de manera secuencial, funcionando como un indicador visual de proximidad.
+    Serial.print("Error camara: ");
 
-Este proyecto combina sensores con sistemas de señalización visual.
+    Serial.println(err);
 
-Aplicación en la vida diaria
+    while(true) {
+      delay(1000);
+    }
+  }
 
-* Indicadores de distancia.
-* Sistemas de estacionamiento.
-* Paneles de proximidad.
-* Sistemas visuales de advertencia.
+  Serial.println("Camara OK");
+
+  // =========================
+  // WIFI
+  // =========================
+
+  WiFi.mode(WIFI_STA);
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Conectando WiFi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+
+    delay(500);
+
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("WiFi conectado");
+
+  Serial.print("IP: ");
+
+  Serial.println(WiFi.localIP());
+
+  // =========================
+  // RUTAS
+  // =========================
+
+  server.on("/", handleRoot);
+
+  server.on("/cam", handleCam);
+
+  server.begin();
+
+  Serial.println("Servidor iniciado");
+}
+
+// =========================
+// LOOP
+// =========================
+
+void loop() {
+
+  server.handleClient();
+
+  delay(2);
+}
